@@ -21,5 +21,5 @@ jobs:
       - name: Store tests results
         uses: actions/upload-artifact@v2
         with:
-          name: report-html
+          name: report-html-${{ matrix.python-version }}
           path: out/report.html
