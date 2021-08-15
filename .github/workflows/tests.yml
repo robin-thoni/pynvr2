@@ -17,4 +17,4 @@ jobs:
           docker build . -f tests/Dockerfile -t pynvr2-tests --build-arg PYTHON_VERSION=${{ matrix.python-version }}
       - name: Run tests
         run: |
-          docker run -it -v `pwd`:/project pynvr2-tests
+          docker run -v `pwd`:/project pynvr2-tests
