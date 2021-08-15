@@ -23,3 +23,14 @@ jobs:
         with:
           name: report-html-${{ matrix.python-version }}
           path: out/report.html
+      - name: Setup Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install project
+          run: |
+            pip install .
+      - name: Test CLI
+          run: |
+            pynrv2-recorder --help &&
+            pynrv2-janitor --help
