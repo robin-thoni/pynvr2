@@ -64,7 +64,7 @@ pynvr2-janitor rotates video files following user-defined policies.
 
     keywords="CCTV NVR DVR camera cameras IP",
 
-    packages=find_packages(),
+    packages=find_packages(exclude=['tests*']),
     install_requires=install_requires,
 
     extras_require={
