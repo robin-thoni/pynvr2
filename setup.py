@@ -1,7 +1,4 @@
 #! /usr/bin/env python3
-from os import path
-import os
-
 from setuptools import setup, find_packages
 
 install_requires = [
@@ -10,19 +7,9 @@ install_requires = [
     'pyyaml',
 ]
 
-here = path.abspath(path.dirname(__file__))
-
-
-def package_files(directory):
-    paths = []
-    for (path, directories, filenames) in os.walk(directory):
-        for filename in filenames:
-            paths.append(os.path.join(path, filename))
-    return paths
-
 setup(
     name='pynvr2',
-    version="0.1.0",
+    version="0.0.1",
 
     description="Tool to record and rotate video files from various sources",
     long_description="""\
