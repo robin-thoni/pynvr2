@@ -41,9 +41,17 @@ jobs:
           pip install build &&
           python -m build --sdist --wheel --outdir dist/
 
+      # Upload `rc0.0.0` to TestPyPi
       - name: Publish on TestPyPi
-        if: ${{ startsWith(github.ref, 'refs/tags/') && matrix.python-version == '3.9' }}
+        if: ${{ startsWith(github.ref, 'refs/tags/rc') && matrix.python-version == '3.9' }}
         uses: pypa/gh-action-pypi-publish@master
         with:
           password: ${{ secrets.TEST_PYPI_API_TOKEN }}
           repository_url: https://test.pypi.org/legacy/
+
+      # Upload `v0.0.0` to PyPi
+      - name: Publish on PyPi
+        if: ${{ startsWith(github.ref, 'refs/tags/v') && matrix.python-version == '3.9' }}
+        uses: pypa/gh-action-pypi-publish@master
+        with:
+          password: ${{ secrets.PYPI_API_TOKEN }}
