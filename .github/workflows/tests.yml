@@ -28,9 +28,9 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install project
-          run: |
-            pip install .
+        run: |
+          pip install .
       - name: Test CLI
-          run: |
-            pynrv2-recorder --help &&
-            pynrv2-janitor --help
+        run: |
+          pynrv2-recorder --help &&
+          pynrv2-janitor --help
