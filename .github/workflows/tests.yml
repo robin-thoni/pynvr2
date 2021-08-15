@@ -38,6 +38,7 @@ jobs:
 
       - name: Build PyPi package
         run: |
+          pip install build &&
           python -m build --sdist --wheel --outdir dist/
 
       - name: Publish on TestPyPi
