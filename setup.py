@@ -1,11 +1,11 @@
 #! /usr/bin/env python3
 from setuptools import setup, find_packages
 
-install_requires = [
-    'argparse',
-    'pydantic',
-    'pyyaml',
-]
+
+def parse_requirements(path: str):
+    with open(path) as f:
+        return [f for f in f.read().splitlines() if f]
+
 
 setup(
     name='pynvr2',
@@ -50,11 +50,11 @@ pynvr2-janitor rotates video files following user-defined policies.
     keywords="CCTV NVR DVR camera cameras IP",
 
     packages=find_packages(exclude=['tests*']),
-    install_requires=install_requires,
+    install_requires=parse_requirements('requirements.txt'),
 
     extras_require={
-        'dev': [],
-        'test': [],
+        'dev': ['setuptools'],
+        'test': parse_requirements('./tests/requirements.txt'),
     },
 
     package_data={
