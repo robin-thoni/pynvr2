@@ -1,0 +1,20 @@
+name: Tests
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.6, 3.7, 3.8, 3.9]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Docker test image ${{ matrix.python-version }}
+        run: |
+          docker build . -f tests/Dockerfile -t pynvr2-tests --build-arg PYTHON_VERSION=${{ matrix.python-version }}
+      - name: Run tests
+        run: |
+          docker run -it -v `pwd`:/project pynvr2-tests
