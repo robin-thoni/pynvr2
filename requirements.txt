@@ -1,0 +1,4 @@
+pydantic
+argparse
+PyYAML
+setuptools
