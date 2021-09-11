@@ -1,39 +1,14 @@
 import abc
-import datetime
 import typing
 
-from pynvr2.janitor.policies.policyresult import PolicyResult
+from pynvr2.janitor.mopdata import CameraData
+from pynvr2.models.config.janitorpolicies.policybasemodel import PolicyBaseModel
 
 
 class AbstractPolicy(metaclass=abc.ABCMeta):
-    def __init__(self, **kwargs):
-        self._current_time: datetime.datetime = kwargs['current_time']
+    def __init__(self, container):
+        self.container = container
 
     @abc.abstractmethod
-    def apply_policy(self, **kwargs) -> PolicyResult:
+    def apply_policy(self, config: PolicyBaseModel, cameras_data: typing.List[CameraData]):
         raise NotImplemented()
-
-
-class Policies:
-    _types: typing.Dict[str, typing.Type] = {}
-    _instances: typing.Dict[str, AbstractPolicy] = {}
-
-    def register_policy(self, name: str, clazz: typing.Type):
-        self._types[name] = clazz
-
-    def instantiate_policies(self, **kwargs):
-        for policy_type_name in self._types:
-            self._instances[policy_type_name] = self._types[policy_type_name](**kwargs)
-
-    def get_policy(self, name: str):
-        return self._instances[name]
-
-
-policies = Policies()
-
-
-def register_policy(name: str):
-    def register_policy_internal(clazz):
-        policies.register_policy(name, clazz)
-        return clazz
-    return register_policy_internal

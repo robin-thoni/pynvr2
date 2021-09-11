@@ -1,8 +1,10 @@
 import pydantic
 
-from pynvr2.models.config.janitorpolicies.policybasemodel import PolicyBaseModel
+from pynvr2.models.config.janitorpolicies.camerapolicybasemodel import CameraPolicyBaseModel
 
 
-class DurationMaxConfigModel(PolicyBaseModel):
-    name: str = pydantic.Field(default='duration_max', const=True)
-    value: int = pydantic.Field()
+class DurationMaxConfigModel(CameraPolicyBaseModel):
+    _NAME = 'camera_duration_max'
+
+    name: str = pydantic.Field(default=_NAME, const=True)
+    value: str = pydantic.Field()

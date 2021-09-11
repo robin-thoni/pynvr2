@@ -1,3 +1,5 @@
 pydantic
 argparse
 PyYAML
+dependency-injector
+Pint

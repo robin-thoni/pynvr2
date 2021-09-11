@@ -30,20 +30,20 @@ class CameraJanitorPolicyModel(ConfigBaseModel):
     name: str = pydantic.Field()
 
 
-class CameraJanitorModel(ConfigBaseModel):
+class CameraModel(ConfigBaseModel):
+    name: str = pydantic.Field()
+    ffmpeg: CameraFfmpegModel = pydantic.Field(default=CameraFfmpegModel())
+    input: CameraInputModel = pydantic.Field()
+    output: CameraOutputModel = pydantic.Field(default=CameraOutputModel())
+
+
+class JanitorModel(ConfigBaseModel):
     policies: typing.List[typing.Union[
         DurationMaxConfigModel,
         DurationMinConfigModel,
     ]] = pydantic.Field(default=[])
 
 
-class CameraModel(ConfigBaseModel):
-    name: str = pydantic.Field()
-    ffmpeg: CameraFfmpegModel = pydantic.Field(default=CameraFfmpegModel())
-    input: CameraInputModel = pydantic.Field()
-    output: CameraOutputModel = pydantic.Field(default=CameraOutputModel())
-    janitor: CameraJanitorModel = pydantic.Field(default=CameraJanitorModel())
-
-
 class ConfigModel(ConfigBaseModel):
     cameras: typing.List[CameraModel] = pydantic.Field()
+    janitor: JanitorModel = pydantic.Field(default=JanitorModel())
