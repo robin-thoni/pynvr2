@@ -18,7 +18,7 @@ class DurationPolicy(CameraAbstractPolicy):
         current_time = self.container.datetime().current()
         start_time = self.container.record_segment_details().get_start_time(record_segment_data.file_path, camera_data.camera)
         diff = current_time - start_time
-        config_value = self.container.unit_parser().parse_timedelta(config.value)
+        config_value = self.container.unit_parser().parse_timedelta(config.duration)
         return self._get_policy(diff, config_value)
 
 

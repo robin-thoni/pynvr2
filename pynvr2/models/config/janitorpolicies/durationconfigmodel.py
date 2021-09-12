@@ -4,7 +4,7 @@ from pynvr2.models.config.janitorpolicies.camerapolicybasemodel import CameraPol
 
 
 class DurationConfigModel(CameraPolicyBaseModel):
-    value: str = pydantic.Field()
+    duration: str = pydantic.Field()
 
 
 class DurationMinConfigModel(DurationConfigModel):

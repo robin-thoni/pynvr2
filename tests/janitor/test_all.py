@@ -43,7 +43,7 @@ def test_basic():
             'policies': [
                 {
                     'name': 'camera_duration_max',
-                    'value': '30 days',
+                    'duration': '30 days',
                     'cameras': ['*'],
                 },
             ],

@@ -61,7 +61,7 @@ def test(policy_value: int, current_date: str, record_segment_date: str, expecte
 
     policy_config = DurationMinConfigModel(**{
         'name': DurationMinConfigModel._NAME,
-        'value': policy_value,
+        'duration': policy_value,
     })
 
     cameras_data = [CameraData(CameraModel(name='cam01', input={'url': 'rtsp://'}))]
