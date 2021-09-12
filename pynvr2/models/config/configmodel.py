@@ -3,8 +3,7 @@ import typing
 import pydantic
 
 from pynvr2.models.config.configbasemodel import ConfigBaseModel
-from pynvr2.models.config.janitorpolicies.durationmax import DurationMaxConfigModel
-from pynvr2.models.config.janitorpolicies.durationmin import DurationMinConfigModel
+from pynvr2.models.config.janitorpolicies.durationconfigmodel import DurationMaxConfigModel, DurationMinConfigModel
 
 
 class CameraFfmpegInputModel(ConfigBaseModel):

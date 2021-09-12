@@ -8,7 +8,7 @@ from pynvr2.janitor.container import Container
 from pynvr2.janitor.mopdata import RecordSegmentData, CameraData
 from pynvr2.janitor.policies.policyresult import PolicyResult
 from pynvr2.models.config.configmodel import CameraModel
-from pynvr2.models.config.janitorpolicies.durationmin import DurationMinConfigModel
+from pynvr2.models.config.janitorpolicies.durationconfigmodel import DurationMinConfigModel
 
 
 def strptime(date: str):

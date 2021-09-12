@@ -1,2 +1,1 @@
-from .durationmaxpolicy import DurationMaxPolicy
-from .durationminpolicy import DurationMinPolicy
+from .durationpolicy import DurationMaxPolicy, DurationMinPolicy
