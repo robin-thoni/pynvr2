@@ -3,7 +3,6 @@ import typing
 
 from pynvr2.janitor.mopdata import CameraData, RecordSegmentData
 from pynvr2.janitor.policies.policyresult import PolicyResult
-from pynvr2.models.args.janitorargsmodel import JanitorArgsModel
 from pynvr2.models.config.configmodel import ConfigModel
 from pynvr2.di.services.io import IO
 from pynvr2.di.services.recordsegmentdetails import RecordSegmentDetails
@@ -13,8 +12,7 @@ import pynvr2.janitor.policies.policies  # Forces policies registrations
 
 
 class Mop:
-    def __init__(self, options: JanitorArgsModel, config: ConfigModel, io: IO, record_segment_details: RecordSegmentDetails, container):
-        self.options = options
+    def __init__(self, config: ConfigModel, io: IO, record_segment_details: RecordSegmentDetails, container):
         self.config = config
         self.io = io
         self.record_segment_details = record_segment_details

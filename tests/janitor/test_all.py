@@ -23,11 +23,10 @@ def test_basic():
     ]
     container.io.override(io_mock)
 
-    container.datetime(value=datetime.datetime(2021, 9, 10, 22, 1, 2))
+    datetime_mock = mock.Mock()
+    datetime_mock.current.return_value = datetime.datetime(2021, 9, 10, 22, 1, 2)
+    container.datetime.override(datetime_mock)
 
-    container.options(**{
-        'config': '404'
-    })
     container.config(**{
         'cameras': [
             {

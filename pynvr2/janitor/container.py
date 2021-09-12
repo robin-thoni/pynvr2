@@ -32,7 +32,6 @@ class Container(containers.DeclarativeContainer):
     )
 
     mop = providers.Singleton(Mop,
-                              options=options,
                               config=config,
                               io=io,
                               container=__self__,
