@@ -3,6 +3,7 @@ import typing
 import pydantic
 
 from pynvr2.models.config.configbasemodel import ConfigBaseModel
+from pynvr2.models.config.janitorpolicies.storageconfigmodel import StorageMaxConfigModel
 from pynvr2.models.config.janitorpolicies.durationconfigmodel import DurationMaxConfigModel, DurationMinConfigModel
 
 
@@ -40,6 +41,7 @@ class JanitorModel(ConfigBaseModel):
     policies: typing.List[typing.Union[
         DurationMaxConfigModel,
         DurationMinConfigModel,
+        StorageMaxConfigModel,
     ]] = pydantic.Field(default=[])
 
 

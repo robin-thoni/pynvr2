@@ -24,6 +24,7 @@ class UnitParserImpl(UnitParser):
         if isinstance(v, int):
             return v
         elif isinstance(v, pint.Quantity):
-            raise NotImplemented()
+            b = v.to('bytes')
+            return b.magnitude
         else:
             raise ValueError()
