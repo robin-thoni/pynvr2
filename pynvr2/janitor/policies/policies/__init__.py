@@ -1,2 +1,2 @@
-from .durationpolicy import DurationMaxPolicy, DurationMinPolicy
+from .agepolicy import AgeMaxPolicy, AgeMinPolicy
 from .storagepolicy import StorageMaxConfigModel

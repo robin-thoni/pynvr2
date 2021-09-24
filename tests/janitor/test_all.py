@@ -42,8 +42,8 @@ def test_basic():
         'janitor': {
             'policies': [
                 {
-                    'name': 'camera_duration_max',
-                    'duration': '30 days',
+                    'name': 'segment_age_max',
+                    'age': '30 days',
                     'cameras': ['*'],
                 },
             ],

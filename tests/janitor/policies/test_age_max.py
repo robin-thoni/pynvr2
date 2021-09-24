@@ -8,7 +8,7 @@ from pynvr2.janitor.container import Container
 from pynvr2.janitor.mopdata import RecordSegmentData, CameraData
 from pynvr2.janitor.policies.policyresult import PolicyResult
 from pynvr2.models.config.configmodel import CameraModel
-from pynvr2.models.config.janitorpolicies.durationconfigmodel import DurationMinConfigModel
+from pynvr2.models.config.janitorpolicies.ageconfigmodel import AgeMaxConfigModel
 
 
 def strptime(date: str):
@@ -20,31 +20,31 @@ testdata = [
         '60 minutes',  # policy_value
         '2021-08-15_11-15-00',  # current_date
         '2021-08-15_10-15-00',  # record_segment_date
-        PolicyResult.PRESERVE,  # policy_result
+        PolicyResult.DELETE,  # policy_result
     ),
     (
         '60 minutes',  # policy_value
         '2021-08-15_11-15-00',  # current_date
         '2021-08-15_10-14-59',  # record_segment_date
-        PolicyResult.IGNORE,  # policy_result
+        PolicyResult.DELETE,  # policy_result
     ),
     (
         '60 minutes',  # policy_value
         '2021-08-15_11-15-00',  # current_date
         '2021-08-15_10-14-00',  # record_segment_date
-        PolicyResult.IGNORE,  # policy_result
+        PolicyResult.DELETE,  # policy_result
     ),
     (
         '60 minutes',  # policy_value
         '2021-08-15_11-15-00',  # current_date
         '2021-08-15_10-16-00',  # record_segment_date
-        PolicyResult.PRESERVE,  # policy_result
+        PolicyResult.IGNORE,  # policy_result
     ),
     (
         '60 minutes',  # policy_value
         '2021-08-15_11-15-00',  # current_date
         '2021-08-15_10-15-01',  # record_segment_date
-        PolicyResult.PRESERVE,  # policy_result
+        PolicyResult.IGNORE,  # policy_result
     ),
 ]
 
@@ -59,9 +59,9 @@ def test(policy_value: int, current_date: str, record_segment_date: str, expecte
 
     container.datetime(value=strptime(current_date))
 
-    policy_config = DurationMinConfigModel(**{
-        'name': DurationMinConfigModel._NAME,
-        'duration': policy_value,
+    policy_config = AgeMaxConfigModel(**{
+        'name': AgeMaxConfigModel._NAME,
+        'age': policy_value,
     })
 
     cameras_data = [CameraData(CameraModel(name='cam01', input={'url': 'rtsp://'}))]

@@ -4,7 +4,7 @@ import pydantic
 
 from pynvr2.models.config.configbasemodel import ConfigBaseModel
 from pynvr2.models.config.janitorpolicies.storageconfigmodel import StorageMaxConfigModel
-from pynvr2.models.config.janitorpolicies.durationconfigmodel import DurationMaxConfigModel, DurationMinConfigModel
+from pynvr2.models.config.janitorpolicies.ageconfigmodel import AgeMaxConfigModel, AgeMinConfigModel
 
 
 class CameraFfmpegInputModel(ConfigBaseModel):
@@ -39,8 +39,8 @@ class CameraModel(ConfigBaseModel):
 
 class JanitorModel(ConfigBaseModel):
     policies: typing.List[typing.Union[
-        DurationMaxConfigModel,
-        DurationMinConfigModel,
+        AgeMaxConfigModel,
+        AgeMinConfigModel,
         StorageMaxConfigModel,
     ]] = pydantic.Field(default=[])
 
