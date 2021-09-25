@@ -6,6 +6,7 @@ class IO:
     def remove(self, path: str):
         raise NotImplemented()
 
+    @abc.abstractmethod
     def size(self, path: str):
         raise NotImplemented()
 
