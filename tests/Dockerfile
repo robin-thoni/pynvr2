@@ -21,6 +21,13 @@ COPY ./tests/requirements.txt /tmp/
 RUN pip install --no-cache-dir -r requirements.txt && \
     rm requirements.txt
 
+RUN apt-get update && \
+  DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -yq \
+   ffmpeg \
+   && \
+  apt-get clean && \
+  rm -rf /var/lib/apt/lists/*
+
 RUN mkdir /project && \
     chown "${USER_ID}":"${GROUP_ID}" /project
 

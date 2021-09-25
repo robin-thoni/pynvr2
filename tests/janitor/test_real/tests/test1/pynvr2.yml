@@ -1,0 +1,12 @@
+cameras:
+  - name: cam01
+    input:
+      url: unused
+    output:
+      segment_time: 01:00 # 1 minute
+      pattern: /tmp/pynvr2-test_real-data/cam01-%Y-%m-%d_%H-%M-%S.mp4
+janitor:
+  policies:
+    - name: segment_age_max
+      cameras: ['*']
+      age: 3 minutes
